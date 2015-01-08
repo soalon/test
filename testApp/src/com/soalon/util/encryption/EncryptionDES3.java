@@ -12,13 +12,18 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.soalon.test.TestEncryption;
-
-public class DES3 {
-	private static Logger logger = LogManager.getLogger(TestEncryption.class
+public class EncryptionDES3 {
+	private static Logger logger = LogManager.getLogger(EncryptionDES3.class
 			.getName());// log4j2日志
-	private static final String Algorithm = "DESede"; // 定义 加密算法,可用
+	private static final String ALGORITHM = "DESede"; // 定义 加密算法,可用
 
+	/**
+	 * 
+	 * @param keyBytes
+	 * @param szSrc
+	 * @return
+	 * @throws Exception
+	 */
 	public static String encrypt3DES(byte[] keyBytes, String szSrc)
 			throws Exception {
 		String cryptograph = "";
@@ -49,9 +54,9 @@ public class DES3 {
 	private static byte[] encryptMode(byte[] keybyte, byte[] src) {
 		try {
 			// 生成密钥
-			SecretKey deskey = new SecretKeySpec(keybyte, Algorithm);
+			SecretKey deskey = new SecretKeySpec(keybyte, ALGORITHM);
 			// 加密
-			Cipher c1 = Cipher.getInstance(Algorithm);
+			Cipher c1 = Cipher.getInstance(ALGORITHM);
 			c1.init(Cipher.ENCRYPT_MODE, deskey);
 			return c1.doFinal(src);
 		} catch (java.security.NoSuchAlgorithmException e1) {
@@ -74,9 +79,9 @@ public class DES3 {
 	private static byte[] decryptMode(byte[] keybyte, byte[] src) {
 		try {
 			// 生成密钥
-			SecretKey deskey = new SecretKeySpec(keybyte, Algorithm);
+			SecretKey deskey = new SecretKeySpec(keybyte, ALGORITHM);
 			// 解密
-			Cipher c1 = Cipher.getInstance(Algorithm);
+			Cipher c1 = Cipher.getInstance(ALGORITHM);
 			c1.init(Cipher.DECRYPT_MODE, deskey);
 			return c1.doFinal(src);
 		} catch (java.security.NoSuchAlgorithmException e1) {
