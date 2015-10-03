@@ -55,9 +55,9 @@
             <appender-ref ref="ProductLog" />  
         </logger>  
         <!-- Root Logger -->  
-        <root level="DEBUG">  
-            <appender-ref ref="DevLog" />  
-            <appender-ref ref="Console" /> 
+        <root level="debug">  
+            <!-- appender-ref ref="DevLog" />   -->
+            <appender-ref ref="Console" />
         </root>  
     </loggers>  
 </configuration>
